@@ -1,9 +1,10 @@
 # Team Rules
+This document outlines all development rules.
 
-### Objective
+## Objective
 - Build a cracked micromouse that zooms through a maze
 
-## Do We Really Need All This Formality and New Tools?
+## Do We Really Need All These Tools?
 - As a tiny team, probably not- we can get away w/ monoliths, sending each other files over chats, working without version control, etc if we wanted to
 
 - ...But, provided we know that
@@ -14,32 +15,15 @@
 - ...There's no reason not to equip ourselves w/ modern know-how and tools that solve these issues
 
 ## Aight, So What're We Doing?
-- We will introduce the bare minimum set of modern practices to:
+- We will follow the bare minimum set of modern practices to:
   - Write working software as fast as possible
   - Write software that we can all quickly read and start tampering
   - Maximize parallel work and allow anyone to work on anything
   - Have no doubt in what we need to do
   - Implement everything on the Micromouse todo-list and feel like we have netherite weapons to take down a spider
-- The minimum set of tools are:
-  - **GitHub Organization**: Mouse Unit 07
-    - all intel, documentation, and development in a single place
-  - **GitHub Projects**: Mouse Unit 07 Kanban
-    - streamlined division of labor and todo lists
-  - **GitHub Discussions**: discussions repo
-    - store useful conversations together w/ rest of development resources
-  - **GitHub**: 
-    - [development reference repos]
-      - team-guides, engineering-sketches, reference documents, discussions, etc
-    - [archive repos]
-      - outdated works
-    - [hardware repos]
-      - schematic/layout pdfs, BOMs, design decision docs, etc
-    - [software repos]
-      - all relevant repos for anyone to work on anything
-  - Software development streamlining and build automation tools
-    - **Jenkins**, **JFrog Artifactory**, **Docker**, **Conan**, **CMake**, **CppUTest**, **CppCheck**, **gcov**, **Clang-format**
+- All tools described in **engineering-sketches/development-tools**
 
-## Details Plz
+## Rules
 
 ### Read & Follow Key Books
 - Let's follow principles introduced in the below books:
@@ -48,6 +32,7 @@
     - *Modern C++ Programming with Test-Driven Development: Code Better, Sleep Better*
     - *The DevOps Handbook*
     - *UML Distilled*
+- TLDR notes provided in **team-guides/essential-references/tldr-notes**
 - Below are things not specified in these books
 
 ### Development Practices
@@ -55,16 +40,18 @@
   - Comments must be resolved
 - Don't directly push to main on Git repos
   - Again, no reviewing pull-requests, but isolates all development efforts and keeps main branch clean
+- Branches should have short lives
+  - As soon as a development branch is done, delete it
 - Commits
-  - Check out **/team-guides/tool-guides/git-guide**
+  - Check out **team-guides/tool-guides/git-guide**
   - Use conventional commits
   - Don't stockpile a collection of commits for a single pull-request
 - Repo names
-  - all lowercase, dashes between words
+  - All lowercase, dashes between words
 - Filenames, directory names 
-  - all lowercase
-  - dashes between words if it's not for code
-  - underscores between words if it's source files/folders
+  - All lowercase
+  - Dashes between words if it's not for code
+  - Underscores between words if it's source files/folders
 - Generate and share development items through GitHub Organization
   - No passing/storing stuff on Google Drive, Discord, etc
   - Store documentation you generate on GitHub Organization repo
@@ -96,19 +83,19 @@ if (x == y) {
 ```
 
 - Variable names, typedefs
-  - all lowercase, underscores between words
+  - All lowercase, underscores between words
 
 - Constants
-  - all uppercase
+  - All uppercase
 
 - Function names
-  - lowercase for first word
-  - capitalize first letter of all other words
-  - no space between words
+  - Lowercase for first word
+  - Capitalize first letter of all other words
+  - No space between words
 
 - Structs
-  - capitalize first letter of all words
-  - no space between words
+  - Capitalize first letter of all words
+  - No space between words
 
 - Java Docs
   - We will eradicate all Java Doc comment headers- we're not writing front facing API's, so we're not mandated to inject documentation in source code to generate nice Doxygen files
