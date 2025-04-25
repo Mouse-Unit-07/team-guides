@@ -21,7 +21,7 @@ This document outlines all development rules.
   - Maximize parallel work and allow anyone to work on anything
   - Have no doubt in what we need to do
   - Implement everything on the Micromouse todo-list and feel like we have netherite weapons to take down a spider
-- All tools described in **engineering-sketches/development-tools**
+- All tools described in [engineering-sketches/development-tools](https://github.com/Mouse-Unit-07/engineering-sketches/blob/main/development-tools/development-tools.md)
 
 ## Rules
 
@@ -32,7 +32,7 @@ This document outlines all development rules.
     - *Modern C++ Programming with Test-Driven Development: Code Better, Sleep Better*
     - *The DevOps Handbook*
     - *UML Distilled*
-- TLDR notes provided in **team-guides/essential-references/tldr-notes**
+- TLDR notes provided in [team-guides/essential-references/tldr-notes](https://github.com/Mouse-Unit-07/team-guides/tree/main/essential-references/tldr-notes)
 - Below are things not specified in these books
 
 ### Development Practices
@@ -43,7 +43,7 @@ This document outlines all development rules.
 - Branches should have short lives
   - As soon as a development branch is done, delete it
 - Commits
-  - Check out **team-guides/tool-guides/git-guide**
+  - Check out [team-guides/tool-guides/git-guide](https://github.com/Mouse-Unit-07/team-guides/blob/main/tool-guides/git-guide/git_guide.md)
   - Use conventional commits
   - Don't stockpile a collection of commits for a single pull-request
 - Repo names
