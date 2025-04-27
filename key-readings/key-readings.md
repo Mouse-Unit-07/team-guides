@@ -1,4 +1,4 @@
-# Essential References
+# Key Readings
 A collection of solid engineering references.
 
 ## Books
