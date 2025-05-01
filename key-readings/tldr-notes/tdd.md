@@ -88,7 +88,7 @@ Terms, ideas, and outlooks defined by test driven development.
     - Must pass in abstract data type (the particular instance) to functions 
     - Ex: a circular buffer module 
   - TDD state machine and cycle
-    -  ![tdd-state-machine](tdd-concepts-images/tdd-state-machine.png)
+    -  ![tdd-state-machine](tdd-images/tdd-state-machine.png)
 
 ## TDD Key Concepts
   - 3 TDD rules
