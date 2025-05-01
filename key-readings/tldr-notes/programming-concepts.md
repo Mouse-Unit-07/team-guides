@@ -247,6 +247,463 @@ Major C-based languages include:
   - Unicode character literals
     - Can use Unicode chars in character and string literals
 
+### Other C releases
+- **K & R C**
+  - First edition in 1972
+  - Second edition in 1978
+- **C90**
+  - International adoption of ANSI C
+  - Minor corrections
+- **C95**
+  - Amendment to C90- wchar_t, wide characters, diagraphs, some library additions
+- **C17, sometimes called C18**
+  - Bugfixes/clarifications to C11
+  - No major new features
+- **C23**
+  - Added nullptr keyword like C++
+  - New safer string functions
+  - More modern usability improvements
+- **w/ respect to gcc**
+  - gcc 3.x
+    - supports C90
+  - gcc 4.x, gcc 5.x
+    - supports C99 and basic C11
+  - gcc 8.x
+    - full C11 support and C17
+  - gcc 13.x+
+    - starts to implement C23
+
+### C Standard Library
+- C standard library implementations vary w/ compiler (gcc (MinGW for Windows), clang, MSVC (Microsoft visual C++), ARM gcc toolchain, etc) and use different C library implementations, and by the compiler version and the version of C supported
+- C standard libraries:
+  - glibc
+    - GNU systems (Linux)
+  - musl
+    - lighweight libc for static linking / embedded Linux
+  - newlib
+    - lightweight libc for embedded systems (ARM MCUs, etc)
+  - uclibc
+    - small C library for embedded Linux systems
+  - Microsoft CRT
+    - “C runtime”
+    - C library on Windows
+- Library headers
+  - **K&R C (1972/1978)**
+    - no formal standard library
+    - stdio.h, ctype.h existed informally
+  - **ANSI C / C89 / C90**
+    - <assert.h>
+      - Diagnostics- catch programming errors early during development and debugging
+      - assert()
+        - checks an expression at runtime
+      - NDEBUG
+        - Preprocessor macro- disables assert() if NDEBUG is defined before assert.h
+    - <ctype.h>
+      - Character classification- functions for checking characters and case conversion
+      - Critical items
+        - isalnum(int c)
+          - check for alphanumeric (letter or digit)
+        - isalpha(int c)
+          - check for alpha
+        - isdigit(int c)
+          - check for decimal digit (0-9)
+        - islower(int c)
+          - check if lowercase
+        - isupper(int c)
+          - check if uppercase
+        - isspace(int c)
+          - check if whitespace character (space, tab, newline, etc)
+        - ispunct(int c)
+          - check if punctuation character
+        - isxdigit(int c)
+          - check if hexadecimal digit (0-9, a-f, A-F)
+        - isprint(int c)
+          - check if printable character including spaces
+        - isgraph(int c)
+          - check if printable, but not a space
+        - iscntrl(int c)
+          - check if control character (\n, \r, etc)
+        - tolower(int c)
+          - convert to lowercase if uppercase
+        - toupper(int c)
+          - convert to uppercase if lowercase
+    - <errorno.h>
+      - …C tried to standardize exceptions, before the concept matured…
+      - Error codes- standard way for functions to report error conditions without needing to change return type
+      - Sets global variable errno and has functions return special values like -1, NULL, etc to indicate what an error was, as opposed to functions returning error objects
+      - Critical items
+        - errno
+          - global or thread local integer variable that stores error code of error producing function call
+        - error macros
+          - symbolic names for error codes
+          - EINVAL = invalid argument
+          - EIO = input/output error, etc
+    - <float.h>
+      - Floating-point limits- provide limits and characteristics of floating-point types as constants defined at compile time
+      - Critical items
+        - Min/max values
+          - FLT_MAX, DBL_MIN
+          - Largest and smallest normalized positive values
+        - Precision
+          - FLT_DIG, DBL_DIG
+          - Minimum number of decimal digits that can be stored without loss
+        - Machine epsilon
+          - FLT_EPSILON, DBL_EPSILON
+          - Smallest positive number e such that 1.0 + e != 1.0
+        - Exponent range
+          - FLT_MIN_EXP, DBL_MAX_EXP
+          - Range of exponent values
+        - Radix/rounding
+          - FLT_RADIX, FLT_ROUNDS
+          - Info about the number base (usually 2) and rounding behavior
+    - <limits.h>
+      - Integer limits- define implementation-specific limits for integer types in C (max/min values, number of bits occupied, whether char is signed or unsigned by default)
+      - Wraps compiler specific macros like \_\_INT_MAX\_\_
+      - Critical components
+        - INT_MIN, LONG_MIN
+          - Smallest representable (most negative) value
+        - INT_MAX, ULONG_MAX
+          - Largest representable value
+        - CHAR_BIT
+          - Number of bits in a byte
+        - SCHAR_MIN, SCHAR_MAX
+          - Range of signed char
+        - UCHAR_MAX, UINT_MAX
+          - Largest values for unsigned types
+    - <locale.h>
+      - Localization
+        - “Locale”- a set of cultural preferences that affect the behavior of certain functions in C like string comparison, number formatting, date/time formatting, etc
+      - Ex: decimal point vs comma, etc
+    - <math.h>
+      - Mathematics functions- definitions and mathematical functions
+      - Basic arithmetic 
+        - fabs(x)
+          - absolute value of floating point
+      - Exponentiation and logarithmic
+        - pow(x, y)
+        - sqrt(x)
+        - log(x)
+          - natural log, ln(x), base e
+        - log10(x)
+      - Trigonometric
+        - sin(x), cos(x), tan(x), asin(x), acos(x), atan(x)
+          - all in radians
+      - Hyperbolic
+        - sinh(x), cosh(x), tanh(x)
+      - Rounding
+        - ceil(x), floor(x)
+          - smallest/largest integer greater/less than or equal to x
+      - constants
+        - NAN
+          - Represents “not a number”
+          - Used for operations that can’t produce a valid number- 0/0, etc
+    - <setjmp.h>
+      - Oh man
+      - Non-local jumps- for storing and restoring execution state, while avoiding use of goto
+      - Purpose is identical to purpose of goto- to handle errors in deeply nested code
+    - <signal.h>
+      - Signals- for asynchronous communication for processes to know that an event occurred 
+      - signal(int signum, sighandler_t handler)
+        - installs a signal handler 
+      - predefined signals
+        - SIGINT
+          - Interrupt signal- ctrl + c
+        - SIGTERM
+          - Termination signal
+        - SIGKILL
+          - Immediate process termination signal
+        - SIGSEGV
+          - Segmentation fault
+          - Aha this is how an IDE can identify when invalid memory accesses are made at runtime
+        - SIGFPE
+          - Floating point exception 
+          - Division by 0, etc
+        - SIGABRT
+          - Abort signal- abort() call 
+        - SIGILL
+          - Illegal instruction signal 
+      - Signal handling safety
+        - You need to make sure you’re using asynchronous signal-safe functions in signal handlers like exit(), _exit(), write(), signal()
+    - <stdarg.h>
+      - Variable arguments- working w/ functions that take a list of arguments- aka definition file for va_list
+      - Critical items
+        - va_list
+          - type to hold the argument list state
+        - va_start
+          - initializes va_list for processing arguments
+        - va_arg
+          - retrieves next argument in a list
+        - va_end
+          - cleans up va_list
+        - va_copy
+          - copies state of va_list to another variable
+    - <stddef.h>
+      - Header that’s usually included in other C standard library headers
+      - Critical typedefs and macros
+    - <stdio.h>
+      - Input/output- functions and macros to handle IO operations- reading/writing to files, standard IO streams, interacting w/ devices, etc
+      - Critical items
+        - File operations
+          - fopen(), fclose(), fread(), fwrite(), fseek(), ftell()
+        - Formatted input/output
+          - printf(), scanf()
+          - fprintf(), fscanf()
+      - writes and reads from a specified file
+          - sprintf(), sscanf()
+      - writes and reads to a buffer/string 
+        - Character input/output
+          - getchar(), putchar()
+          - getch(), putch()
+      - some implementations support these functions to read/write without buffering
+        - End-of-file handling
+          - EOF- constant indicating the end of a file, or error in IO operations
+        - Buffered IO operations
+          - setbuf(), setvbuf(), fflush()
+        - Standard IO streams
+          - stdin, stdout, stderr
+          - standard streams for input, output, and error output
+          - predefined file pointers in C- points to console’s input and output
+        - Error handling
+          - perror(), clearerr(), feof(), ferror()
+        - Temporary files
+          - tmpfile(), tmpnam()
+        - File control
+          - remove(), rename()
+    - <stdlib.h>
+      - “General utilities”
+        - Memory allocation
+        - Process control
+        - Conversion of data types
+        - Random number generation
+        - Environment management
+      - Critical items
+        - Memory management
+          - malloc(), calloc(), realloc() free()
+        - Process control
+          - exit()
+      - terminates the program w/ specified exit status
+          - abort(), atexit(), system()
+        - Conversion functions
+          - atoi()
+      - string (ascii) to integer
+          - atol()
+      - string to long integer
+          - atoll()
+      - string to a long long integer
+          - strtol()
+      - string to a long integer w/ error checking for invalid input
+          - strtoul()
+      - string to an unsigned long integer
+          - strtod()
+      - string to a double-precision floating-point number
+        - Random number generation
+          - rand(), srand()
+        - Environment management
+          - getenv()
+      - retrieves value of environment variable
+          - putenv()
+      - sets/modifies value of environment variable
+        - Other utility functions
+          - These are math related, but exist here as general utilities since they don’t involve complex math
+          - abs(), labs(), llabs()
+      - absolute value of integer, long, long long
+          - div(), ldiv(), lldiv()
+      - computes quotient and remainder of int, long, long long 
+    - <string.h>
+      - String handling- performing string operations
+      - Critical items
+        - strlen()
+          - returns length of null-terminated string
+        - strcpy() strncpy()
+          - copies null-terminated string, w/o and w/ specified number of characters
+        - strcat() strncat()
+          - concatenates null-terminated string to another w/o and w/ specified number of characters
+        - strcmp() strncmp()
+          - compares two null-terminated strings w/o and w/ specified number of characters 
+        - strchr() strrchr()
+          - locates first and last occurrence of a character in a string respectively 
+        - strstr()
+          - locates first occurrence of a substring in a string
+        - memcpy() memmove() memset() memcmp() 
+          - good to know that these functions exist here instead of in general utilities
+        - strtok()
+          - breaks string into sequence of tokens based on delimitters
+    - <time.h>
+      - Date and time- measuring intervals, manipulating/formatting time, ettc
+      - Critical items
+        - time(), clock(), difftime(), mktime(), localtime(), gmtime(), strftime(), asctime(), ctime()
+          - various time related functions…
+        - sleep()
+          - oh man
+          - suspends execution of the program for a specified number of seconds
+        - struct tm
+          - represent time components
+          - sec, min, hour, day of the month, month, years since 1900, day of the week, day of the year, daylight saving time flag
+          - CLOCKS_PER_SEC
+      - Ticks per second
+      - \_\_TIME\_\_, \_\_DATE\_\_
+        - It’s weird, but this C standard header doesn’t provide wrappers for these compiler macros
+        - These macros are compiler exclusive
+        - C95
+          - Old effort to try and integrate more character types into char type before Unicode took over
+    - <wchar.h>
+      - Wide character handling
+    - <wctype.h>
+        - Wide character classification
+  - **C99**
+    - Expanded on:
+      - <math.h> expansion
+        - Functions
+          - fmod(x, y)
+      - remainder of x/y as floating-point
+          - round(x)
+      - nearest integer to x
+      - halfway cases rounded away from 0
+          - fma(), fmax(), fmin(), fpow(), trunc(), ilogb(), scalbn(), nextafter(), rem(), copysign()
+        - Constants
+          - M_PI = pi
+          - M_E = e
+          - M_LN2 = Ln(2)
+          - M_LN10 = Ln(10)
+          - M_LOG2E = Base 2 log of e
+          - HUGE_VAL
+            - Constant representation of +infinity for floating types
+      - <stdio.h> expansion
+        - Functions
+          - snprintf()
+            - sprint(), but limits number of characters that can be written
+          - vsprintf()
+            - snprintf() that takes variable number of arguments
+          - vscanf(), vfscanf(), vsscanf()
+            - variable list of arguments for input operations
+          - New format specifiers
+            - %a
+              - Printing/scanning floating-point numbers in hex
+            - %z
+              - Printing size_t values
+            - %ll
+              - Printing long long types
+      - <stdlib.h> expansion
+        - aligned_alloc()
+          - allocates memory w/ specified alignment 
+        - calloc()
+          - existed before C99, but only in C99 it’s been clarified that it allocates and zeros memory
+        - atof(), atoi(), atoll() and variations
+          - further standardized to convert strings into various types
+        - rand(), srand() expanded
+        - strtol(), strtoll(), stroul(), strtoull()
+          - functions for string to number conversion
+        - Sorting and searching
+          - qsort()
+            - generic quick sort implementation
+          - bsearch()
+            - generic binary search implementation
+    - <complex.h>
+        - Complex number arithmetic (imaginary numbers)
+    - <fenv.h>
+      - Floating-point environment- provides exceptions and rounding modes
+      - FE_TONEAEREST, FE_UPWARD, FE_DOWNWARD, FE_TOWARDZERO, etc
+    - <stdint.h>
+      - Fixed-width integer types
+      - uint8_t, etc that we know and love
+    - <inttypes.h>
+      - Extension to stdint.h providing macros for formatting and printing fixed-width integer types defined in stdint.h
+      - Format macros
+        - PRId8, RPIu8, PRIx8, etc
+        - So format specifies for each width-specific integer type
+      - Integer type limits
+        - INT8_MIN, INT32_MIN, etc
+      - Macros for integer type size checking
+        - INT8_WIDTH, UINT16_WIDTH, etc
+    - <stdbool.h>
+      - Boolean types
+      - “bool” type, “true”, “false”
+    - <tgmath.h>
+      - (exists in C99, but deprecated in C11)
+      - Attempted to implement type generic math
+  - **C11**
+    - Expansions
+      - Added static_assert, anonymous structs/unions
+    - <stdalign.h>
+      - Provides macros and facilities for type alignment requirements in C
+    - <stdatomic.h>
+      - Atomic operations
+    - <threads.h>
+      - Multi-threading
+    - <uchar.h>
+      - Unicode character types
+  - **C17 / C18**
+    - No new headers
+    - Just bugfix/clarification release
+  - **C23**
+    - Expansions
+      - <string.h>
+      - Enhanced functions
+        - <stdio.h>, <stdlib.h>, <assert.h>, etc
+    - <stdckdint.h>
+      - Checked integer arithmetic
+
+### Compiler Defined Constants / Functions
+- **Macros**
+  - General macros
+    - \_\_TIME\_\_
+      - time of compilation
+    - \_\_DATE\_\_
+      - Date of compilation 
+    - \_\_FILE\_\_
+      - Name of current source file
+    - \_\_LINE\_\_
+      - Current line number in source file
+    - \_\_STDC\_\_
+      - 1 if the compiler conforms to ANSI C standard
+  - Preprocessor conditionals and versioning
+    - \_\_cplusplus
+      - Defined if code is being compiled as C++ code
+    - \_\_STDC_VERSION\_\_
+      - Defined if compiler supports standard C
+    - \_\_GNUC\_\_, \_\_GNUC_MINOR\_\_, \_\_GNUC_PATCHLEVEL\_\_
+      - Indicate version of GCC being used 
+    - \_\_clang\_\_
+      - Defined when Clang is being used
+    - \_\_MINGW32\_\_
+      - Defined when MinGW is being used
+  - Architecture-specific macros
+    - \_\_x86_64\_\_, \_\_amd64\_\_
+      - Defined when compiling for 64-bit x86 architecture
+    - \_\_i386\_\_, i686\_\_
+      - Defined when compiling for 32-bit x86 architecture
+    - \_\_arm\_\_, \_\_aarch64\_\_
+      - Defined when compiling for ARM architecture
+    - \_\_mips\_\_
+      - Defined when compiling for MIPS architecture
+    - \_\_powerpc\_\_, \_\_ppc\_\_
+      - Defined when compiling for PowerPC architecture 
+  - Platform-specific macros
+    - \_\_WIN32\_\_, _WIN32
+      - Defined when compiling for Windows platforms
+    - \_\_APPLE\_\_
+      - Defined when compiling on macOS
+    - \_\_linux\_\_
+      - Defined when compiling for Linux platforms
+    - \_\_unix\_\_
+      - Defined when compiling on any Unix-like platforms
+    - \_\_ANDROID\_\_
+      - Defined when compiling for Android platforms
+  - Optimization macros
+    - \_\_OPTIMIZE\_\_
+      - Defined if compiler is performing optimizations
+    - \_\_NO_INLINE\_\_
+      - Defined if function inlining is disabled by the compiler
+    - \_\_INLINE\_\_
+      - Defined if function inlining is enabled
+  - Memory related macros
+    - \_\_near, \_\_far, \_\_restrict
+      - Used in 16-bit compilers to specific near/far memory models for pointers
+- **Functions**
+  - \_\_builtin functions
+    - Provided by GCC/Clang compilers for performance/optimization purposes
+
+
 ### Basic C Convention
 - Data types
     - Stay consistent w/ datatypes
@@ -797,14 +1254,113 @@ Major C-based languages include:
         - issues warning if function return value is ignored
 
 ### Errors
-  - types include
-    - compiler error
-    - linker error
-    - runtime error
-    - warnings
-    - logical error
-    - preprocessor error
-    - build system error
+- **compiler error**
+  - expected ‘;’ before
+    - missing semicolon
+  - undeclared identifier
+    - variable or function not defined
+  - incompatible types 
+    - assignment of wrong type
+  - redefinition
+    - variable or function defined more than once
+  - conflicting types 
+    - function prototype doesn’t match implementation
+  - invalid operands
+    - performing an operation on incompatible types
+  - non-void function should return a value
+    - return missing in non-void function
+  - array subscript is not an integer
+    - using a non-integer index
+  - initializer element is not constant
+    - invalid static/global variable initialization 
+  - storage size of ‘X’ isn’t known
+    - incomplete type used
+  - too few/many arguments to function
+    - function call mismatch
+  - dereferencing pointer to incomplete type
+    - missing struct/typedef definition
+- **linker error**
+  - undefined reference to ‘function’
+    - function declared but not defined
+  - multiple definition of 
+    - function or variable defined in multiple source files
+  - cannot find -l<libname>
+    - missing library during linking
+  - unresolved external symbol
+    - object file references missing symbol
+  - symbol already defined in object
+    - conflicting symbol definitions
+  - duplicate symbol
+    - identical symbols in separate files
+- **runtime error**
+  - segmentation fault (SIGSEGV)
+    - invalid memory access
+  - bus error
+    - misaligned memory access
+  - stack overflow
+    - infinite recursion or large stack allocation
+  - division by zero
+    - dividing integer or float by 0
+  - null pointer dereference
+    - dereferencing a NULL pointer
+  - use-after-free
+    - accessing freed memory
+  - memory leak
+    - allocated memory not freed
+  - buffer overflow
+    - writing past array boundaries
+  - double free
+    - freeing already freed memory
+  - undefined behavior
+    - from violating C spec (signed overflow, assigning a enumerated variable something that’s not enumerated, etc)
+- **warnings**
+  - unused variable/function
+    - unused declaration
+  - comparison between signed and unsigned 
+    - type mismatch
+  - control reaches end of non-void function
+    - missing return
+  - uninitialized variable
+    - variable used without initialization
+  - implicit declaration
+    - function used without a prototype
+  - cast from pointer to integer of different size
+    - unsafe cast
+  - ignoring return value
+    - return value not used 
+- **logical error**
+  - wrong condition in if/while
+    - = instead of ==, etc
+  - infinite loop
+    - missing exit condition
+  - incorrect algorithm
+    - wrong output due to logic flaw
+  - off-by-one error
+    - accessing one element too many/few
+  - misuse of operators
+    - misuse of operators
+- **preprocessor error**
+  - #include file not found
+    - missing or misspelled header
+  - #ifdeef/#ifndef mismatch
+    - conditional compilation issues
+  - macro redefined
+    - duplicate macro definitions
+  - unterminated #if
+    - mismatched #if/#endif
+  - #error directive
+    - Manual compile-time error trigger
+- **build system error**
+  - no rule to make target
+    - missing dependency file
+  - missing separator
+    - makefile syntax error
+  - undefined CMake command
+    - invalid or unknown command
+  - cannot open source file
+    - file path wrong or missing
+  - cannot find compiler
+    - misconfigured toolchain
 
 ## Python
 ### Comments
