@@ -32,7 +32,7 @@ This document outlines all development rules.
     - *Modern C++ Programming with Test-Driven Development: Code Better, Sleep Better*
     - *The DevOps Handbook*
     - *UML Distilled*
-- TLDR notes provided in [team-guides/essential-references/tldr-notes](https://github.com/Mouse-Unit-07/team-guides/tree/main/essential-references/tldr-notes)
+- TLDR notes provided in [team-guides/key-readings/tldr-notes](https://github.com/Mouse-Unit-07/team-guides/tree/main/key-readings/tldr-notes)
 - Below are things not specified in these books
 
 ### Development Practices
@@ -43,7 +43,7 @@ This document outlines all development rules.
 - Branches should have short lives
   - As soon as a development branch is done, delete it
 - Commits
-  - Check out [team-guides/tool-guides/git-guide](https://github.com/Mouse-Unit-07/team-guides/blob/main/tool-guides/git-guide/git_guide.md)
+  - Check out [team-guides/guides/tools/git-guide](https://github.com/Mouse-Unit-07/team-guides/tree/main/guides/tools/git-guide)
   - Use conventional commits
   - Don't stockpile a collection of commits for a single pull-request
 - Follow source code templates
