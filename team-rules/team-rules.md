@@ -51,9 +51,13 @@ This document outlines all development rules.
 - Repo names
   - All lowercase, dashes between words
 - Filenames, directory names 
-  - All lowercase
-  - Dashes between words if it's not for code
-  - Underscores between words if it's source files/folders
+  - If source code file/folder name
+    - **Snake case**
+      - All lowercase
+      - Underscores between words
+  - If not souce code file/folder
+    - Snake case, but dashes between words instead of underscores
+   if it's source files/folders
 - Generate and share development items through GitHub Organization
   - No passing/storing stuff on Google Drive, Discord, etc
   - Store documentation you generate on GitHub Organization repo
@@ -89,7 +93,7 @@ if (x == y) {
 
 - Variable names
   - `uint32_t someVariableName = 0u`
-  - Camel case
+  - **Camel case**
     - Lowercase for first word
     - Capitalize first letter of all other words
     - No space between words
