@@ -46,6 +46,8 @@ This document outlines all development rules.
   - Check out [team-guides/tool-guides/git-guide](https://github.com/Mouse-Unit-07/team-guides/blob/main/tool-guides/git-guide/git_guide.md)
   - Use conventional commits
   - Don't stockpile a collection of commits for a single pull-request
+- Follow source code templates
+  - Adhere to comment headers and code structure defined by source code templates: [team-guides/source-templates](https://github.com/Mouse-Unit-07/team-guides/tree/main/source-templates/c-template)
 - Repo names
   - All lowercase, dashes between words
 - Filenames, directory names 
@@ -59,15 +61,18 @@ This document outlines all development rules.
 ### Programming
 - 80 characters per line
   - Makes GitHub side-by-side view easy to see
-
-- Open curly brace `{` on the same line as conditional statement, unless it's a function definition
-  - Lord Linus Torvald's Linux Kernel guide: https://docs.kernel.org/process/coding-style.html
-  - You can't nest function definitions in C, so the highlight from `{` on its own line is nice
-  - Otherwise, let's keep it compact 
-
-- Keep closing curly brace `}` on its own line, except where it's followed by a continuation of the same statement
-  - Also by Lord Linus Torvald
-  - Ex:
+- No tabs, 4 spaces per indentation
+  - Arbitrary, but most IDE's/text editors default to 4 spaces
+- Curly Braces
+  - Use curly braces even when there's only a single line to surround
+    - there should always be less lines of code, but lack of braces causes hesitation to add / remove lines due to extra step of adding/removing braces
+  - Open curly brace `{` on the same line as conditional statement, unless it's a function definition
+    - Lord Linus Torvald's Linux Kernel guide: https://docs.kernel.org/process/coding-style.html
+    - You can't nest function definitions in C, so the highlight from `{` on its own line is nice
+    - Otherwise, let's keep it compact 
+  - Keep closing curly brace `}` on its own line, except where it's followed by a continuation of the same statement
+    - Also by Lord Linus Torvald
+    - Ex:
 ```
 do {
     /* body here */
@@ -82,23 +87,27 @@ if (x == y) {
 }
 ```
 
-- Variable names, typedefs
-  - All lowercase, underscores between words
-
+- Variable names
+  - `uint32_t someVariableName = 0u`
+  - Camel case
+    - Lowercase for first word
+    - Capitalize first letter of all other words
+    - No space between words
+- Typedefs
+  - `typedef struct CircularBufferStruct CircularBuffer`
+  - Camel case, but first letter is capitalized too
+  - DON'T add `_t` suffix- that's reserved for code following POSIX like `size_t`
 - Constants
+  - `const char DEFAULT_MESSAGE[] = "Hello World\r\n"`
   - All uppercase
-
 - Function names
-  - Lowercase for first word
-  - Capitalize first letter of all other words
-  - No space between words
-
+  - `someFunctionName(uint32_t anArgument)`
+  - Camel case
 - Structs
-  - Capitalize first letter of all words
-  - No space between words
-
+  - Camel case, but first letter is capitalized too
 - Java Docs
-  - We will eradicate all Java Doc comment headers- we're not writing front facing API's, so we're not mandated to inject documentation in source code to generate nice Doxygen files
+  - No Java Doc comment headers
+  - We're not writing front facing API's, so we're not mandated to inject documentation in source code to generate nice Doxygen files
   - Less comments the better
 
 ## Can We Change Something?
