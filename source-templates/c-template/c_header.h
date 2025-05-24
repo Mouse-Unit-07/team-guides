@@ -8,12 +8,12 @@
 #define C_HEADER_H_
 
 /*----------------------------------------------------------------------------*/
-/*                                Definitions                                 */
+/*                             Public Definitions                             */
 /*----------------------------------------------------------------------------*/
 typedef struct TriangularBufferStruct * TriangularBuffer;
 
 /*----------------------------------------------------------------------------*/
-/*                       Exportable Function Prototypes                       */
+/*                         Public Function Prototypes                         */
 /*----------------------------------------------------------------------------*/
 void addItemTriangularBuffer(TriangularBuffer bufferInstance, uint32_t newItem);
 uint32_t removeItemTriangularBuffer(TriangularBuffer bufferInstance);
