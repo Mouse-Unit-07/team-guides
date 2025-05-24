@@ -20,7 +20,7 @@
 /* keep empty */
 
 /*----------------------------------------------------------------------------*/
-/*                              Filescope Globals                             */
+/*                               Private Globals                              */
 /*----------------------------------------------------------------------------*/
 enum triangularBufferConstants {
     SPECIAL_INDEX = 0u,
@@ -44,12 +44,12 @@ static const char[] SOME_STRING = "a constant string";
 /* none */
 
 /*----------------------------------------------------------------------------*/
-/*                              Helper Prototypes                             */
+/*                         Private Function Prototypes                        */
 /*----------------------------------------------------------------------------*/
 static uint32_t privateFunctionName(uint32_t argumentName);
 
 /*----------------------------------------------------------------------------*/
-/*                       Exportable Function Definitions                      */
+/*                         Public Function Definitions                        */
 /*----------------------------------------------------------------------------*/
 void addItemTriangularBuffer(TriangularBuffer bufferInstance, uint32_t newItem)
 {
@@ -69,7 +69,7 @@ uint32_t removeItemTriangularBuffer(TriangularBuffer bufferInstance)
 }
 
 /*----------------------------------------------------------------------------*/
-/*                             Helper Definitions                             */
+/*                        Private Function Definitions                        */
 /*----------------------------------------------------------------------------*/
 static uint32_t privateFunctionName(uint32_t argumentName)
 {

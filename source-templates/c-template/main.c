@@ -17,17 +17,17 @@
 /* keep empty */
 
 /*----------------------------------------------------------------------------*/
-/*                              Filescope Globals                             */
+/*                               Private Globals                              */
 /*----------------------------------------------------------------------------*/
 static const int32_t ANOTHER_CONSTANT = -9000;
 
 /*----------------------------------------------------------------------------*/
-/*                              Helper Prototypes                             */
+/*                         Private Function Prototypes                        */
 /*----------------------------------------------------------------------------*/
 static int32_t privateFunctionName(char* argumentName);
 
 /*----------------------------------------------------------------------------*/
-/*                             Helper Definitions                             */
+/*                        Private Function Definitions                        */
 /*----------------------------------------------------------------------------*/
 static int32_t privateFunctionName(const char* argumentName)
 {
