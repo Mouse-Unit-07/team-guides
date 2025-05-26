@@ -10,12 +10,14 @@
 /*----------------------------------------------------------------------------*/
 /*                             Public Definitions                             */
 /*----------------------------------------------------------------------------*/
-typedef struct TriangularBufferStruct * TriangularBuffer;
+typedef struct CircularBufferStruct *CircularBuffer;
 
 /*----------------------------------------------------------------------------*/
 /*                         Public Function Prototypes                         */
 /*----------------------------------------------------------------------------*/
-void addItemTriangularBuffer(TriangularBuffer bufferInstance, uint32_t newItem);
-uint32_t removeItemTriangularBuffer(TriangularBuffer bufferInstance);
+CircularBuffer initCircularBuffer(void);
+void deinitCircularBuffer(CircularBuffer buffer);
+void addItemCircularBuffer(CircularBuffer buffer, uint32_t item);
+uint32_t removeItemCircularBuffer(CircularBuffer buffer);
 
 #endif /* C_HEADER_H_ */

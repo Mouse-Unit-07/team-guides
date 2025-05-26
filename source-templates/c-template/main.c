@@ -24,12 +24,12 @@ static const int32_t ANOTHER_CONSTANT = -9000;
 /*----------------------------------------------------------------------------*/
 /*                         Private Function Prototypes                        */
 /*----------------------------------------------------------------------------*/
-static int32_t privateFunctionName(char* argumentName);
+static int32_t privateFunctionName(char *argumentName);
 
 /*----------------------------------------------------------------------------*/
 /*                        Private Function Definitions                        */
 /*----------------------------------------------------------------------------*/
-static int32_t privateFunctionName(const char* argumentName)
+static int32_t privateFunctionName(const char *argumentName)
 {
     int32_t retValue = 0;
 
