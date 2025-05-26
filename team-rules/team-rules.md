@@ -91,6 +91,15 @@ if (x == y) {
 }
 ```
 
+- Pointer asterisk on variable name, not data type
+  - `uint32_t *myPointer = NULL;`
+  - `uint32_t *myPointer, *anotherPointer, *lastPointer;`
+  - arbitrary, but useful if you were to declare multiple pointers in one line (which you shouldn't do either...)
+- No single line function definitions
+  - They're hard to catch and differentiate w/ other code
+- No single line enumerations
+  - A bit more arbitrary than function definitions
+  - Avoids need to go back and forth between single line and mutiple line format if changes were to be made
 - Variable names
   - `uint32_t someVariableName = 0u`
   - **Camel case**
