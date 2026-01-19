@@ -1,5 +1,6 @@
 # Optional Tools
-List of useful optional tools for development.
+
+- List of useful optional tools for development
 
 - **Beyond Compare**
   - https://www.scootersoftware.com/
@@ -9,3 +10,7 @@ List of useful optional tools for development.
 - **QTTabBar**
   - http://qttabbar.wikidot.com/
   - Adds tabs to Windows Explorer
+
+- **VS Code Extensions**
+  - Prettier
+    - Great for formatting markdown files
