@@ -9,11 +9,10 @@
 /*                               Include Files                                */
 /*----------------------------------------------------------------------------*/
 #include "CircularBuffer.hpp"
-#include "RuntimeError.hpp"
-
 #include <cstdint>
 #include <string>
 #include <vector>
+#include "RuntimeError.hpp"
 
 /*----------------------------------------------------------------------------*/
 /*                                 Debug Space                                */
@@ -26,7 +25,7 @@
 namespace {
     constexpr std::size_t CIRCULAR_BUFFER_CAPACITY = 64u;
     const double PI = 3.14;
-    const char SOME_STRING[] = "a constant string";
+    constexpr std::string_view SOME_STRING = "a constant string";
 }
 
 /*----------------------------------------------------------------------------*/
@@ -51,10 +50,10 @@ CircularBuffer::CircularBuffer()
     // No RUNTIME_ERROR here because constructor cannot fail in C++
 }
 
-void CircularBuffer::add(uint32_t item)
+void CircularBuffer::push(uint32_t item)
 {
     if (count_ >= CIRCULAR_BUFFER_CAPACITY) {
-        RUNTIME_ERROR("add item: buffer full", static_cast<int>(count_));
+        RUNTIME_ERROR("push: buffer full", static_cast<int>(count_));
     }
 
     buffer_[tail_] = transformItem(item);
@@ -62,10 +61,10 @@ void CircularBuffer::add(uint32_t item)
     ++count_;
 }
 
-uint32_t CircularBuffer::remove()
+uint32_t CircularBuffer::pop()
 {
     if (count_ == 0u) {
-        RUNTIME_ERROR("remove item: buffer empty", 0);
+        RUNTIME_ERROR("pop: buffer empty", static_cast<int>(count_));
     }
 
     uint32_t item = buffer_[head_];

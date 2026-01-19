@@ -8,10 +8,9 @@
 /*----------------------------------------------------------------------------*/
 /*                               Include Files                                */
 /*----------------------------------------------------------------------------*/
-#include "circular_buffer.h"
-#include "runtime_error.h"
-
+#include "c_header.h"
 #include <stdint.h>
+#include "runtime_error.h"
 
 /*----------------------------------------------------------------------------*/
 /*                                 Debug Space                                */
@@ -25,7 +24,7 @@ enum {
     CIRCULAR_BUFFER_CAPACITY = 64u
 };
 
-struct CircularBufferStruct {
+struct circular_buffer_struct {
     uint32_t buffer[CIRCULAR_BUFFER_CAPACITY];
     uint32_t head;
     uint32_t tail;
@@ -43,55 +42,54 @@ static const char SOME_STRING[] = "a constant string";
 /*----------------------------------------------------------------------------*/
 /*                         Private Function Prototypes                        */
 /*----------------------------------------------------------------------------*/
-static uint32_t transformItem(uint32_t input);
+static uint32_t private_function_name(uint32_t parameter_name);
 
 /*----------------------------------------------------------------------------*/
 /*                         Public Function Definitions                        */
 /*----------------------------------------------------------------------------*/
-CircularBuffer initCircularBuffer(void)
+circular_buffer init_circular_buffer(void)
 {
-    CircularBuffer buffer = malloc(sizeof(struct CircularBufferStruct));
+    circular_buffer buffer = malloc(sizeof(struct circular_buffer_struct));
     if (!buffer) {
-        RUNTIME_ERROR("init: NULL buffer", 0, __FILE__, __LINE__);
+        RUNTIME_ERROR("init: NULL buffer", buffer);
     }
 
-    initParametersCircularBuffer(buffer);
+    init_circular_buffer_elements(buffer);
     return buffer;
 }
 
-void deinitCircularBuffer(CircularBuffer buffer)
+void deinit_circular_buffer(circular_buffer buffer)
 {
     if (!buffer) {
-        RUNTIME_ERROR("deinit: NULL buffer", 0, __FILE__, __LINE__);
+        RUNTIME_ERROR("deinit: NULL buffer", buffer);
     }
 
     free(buffer);
 }
 
-void addItemCircularBuffer(CircularBuffer buffer, uint32_t item)
+void push_to_circular_buffer(circular_buffer buffer, uint32_t item)
 {
     if (!buffer) {
-        RUNTIME_ERROR("add item: NULL buffer", 0, __FILE__, __LINE__);
+        RUNTIME_ERROR("push: NULL buffer", buffer);
     }
 
     if (buffer->count >= CIRCULAR_BUFFER_CAPACITY) {
-        RUNTIME_ERROR("add item: buffer full", 
-            buffer->count, __FILE__, __LINE__);
+        RUNTIME_ERROR("push: buffer full", buffer->count);
     }
 
-    buffer->buffer[buffer->tail] = transformItem(item);
+    buffer->buffer[buffer->tail] = private_function_name(item);
     buffer->tail = (buffer->tail + 1) % CIRCULAR_BUFFER_CAPACITY;
     buffer->count++;
 }
 
-uint32_t removeItemCircularBuffer(CircularBuffer buffer)
+uint32_t pop_from_circular_buffer(circular_buffer buffer)
 {
     if (!buffer) {
-        RUNTIME_ERROR("remove item: NULL buffer", 0, __FILE__, __LINE__);
+        RUNTIME_ERROR("pop: NULL buffer", buffer);
     }
 
     if (buffer->count == 0u) {
-        RUNTIME_ERROR("remove item: buffer empty", 0, __FILE__, __LINE__);
+        RUNTIME_ERROR("pop: buffer empty", buffer->count);
     }
 
     uint32_t item = buffer->buffer[buffer->head];
@@ -103,26 +101,26 @@ uint32_t removeItemCircularBuffer(CircularBuffer buffer)
 /*----------------------------------------------------------------------------*/
 /*                        Private Function Definitions                        */
 /*----------------------------------------------------------------------------*/
-static void initParametersCircularBuffer(CircularBuffer buffer)
+static void init_circular_buffer_elements(circular_buffer buffer)
 {
     if (!buffer) {
-        RUNTIME_ERROR("init parameters: NULL buffer", 0, __FILE__, __LINE__);
+        RUNTIME_ERROR("init parameters: NULL buffer", buffer);
     }
 
     buffer->head = 0u;
     buffer->tail = 0u;
     buffer->count = 0u;
 
-    for (uint32_t i = 0; i < CIRCULAR_BUFFER_CAPACITY; ++i) {
+    for (uint32_t i = 0; i < CIRCULAR_BUFFER_CAPACITY; i++) {
         buffer->buffer[i] = 0u;
     }
 }
 
-static uint32_t privateFunctionName(uint32_t argumentName)
+static uint32_t private_function_name(uint32_t parameter_name)
 {
-    uint32_t returnValue = 0u;
+    uint32_t some_value = 0u;
 
     /* ...some helper logic here */
     
-    return returnValue;
+    return some_value;
 }

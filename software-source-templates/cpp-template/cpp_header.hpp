@@ -13,9 +13,10 @@
 class CircularBuffer {
 public:
     CircularBuffer();
+    ~CircularBuffer() = default;
 
-    void add(uint32_t item);
-    uint32_t remove();
+    void push(uint32_t item);
+    uint32_t pop();
 
 private:
     std::vector<uint32_t> buffer_;
