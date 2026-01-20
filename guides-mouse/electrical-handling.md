@@ -2,6 +2,11 @@
 
 - Micromouse electrical maintenance notes
 
+## Index
+
+- [Micromouse Handling](#micromouse-handling)
+- [Battery care](#battery-care)
+
 ## Micromouse Handling
 
 - Try to keep the bot in an ESD bag during transport
