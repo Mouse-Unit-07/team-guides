@@ -8,12 +8,12 @@
 ## Hex Nuts and Screws
 
 - **Sockets for 3D Printed Parts**
-  - ![hex-nut-sockets](_images/mechanical-design-guide/hex-nut-sockets.png)
+  - ![hex-nut-sockets](_images/mechanical-design/hex-nut-sockets.png)
   - Sockets added to superglue hex nuts into 3D mounts to avoid having to hold down hex nuts when assembling mounts on to the motherboard
 
 ## Wheel Bearing Spacers
 
-- ![ball-bearing](_images/mechanical-design-guide/ball-bearing.png)
+- ![ball-bearing](_images/mechanical-design/ball-bearing.png)
 - Needed to prevent outer ring of ball-bearings from touching 3D printed mounts and screw heads
 - Crucial that they're made of metal- tried to 3D print spacers, but they eventually mold into the shapes of the parts they're spaced between
 
@@ -32,12 +32,12 @@
     - impeller blower configuration video: https://youtu.be/YuEaP9kyiFc?si=spyc_kHSI9guTJmH
     - impeller fan crafted by hand video: https://youtu.be/Hyz1TMbNVSo?si=MinbotT-jVyszSr6
   - puller configuration
-    - ![impeller-fan-video](_images/mechanical-design-guide/impeller-fan-video.png)
+    - ![impeller-fan-video](_images/mechanical-design/impeller-fan-video.png)
       - when a fan's wings scoop the air, it's pusher configuration
       - when a fan's wings swing air out, it's puller configuration
       - in the above image, when the fan moves counter-clockwise it's the most efficient design in terms of power consumption and RPM
 - Failed designs
-  - ![ball-bearing](_images/mechanical-design-guide/failed-vacuum-fans.png)
+  - ![ball-bearing](_images/mechanical-design/failed-vacuum-fans.png)
   - Reasons for failure include lack of suction, lack of durability (fan parts break apart), and noise
     - Second to last failing design is intolerably loud
     - Last design is essentially the working design, but a bit too tall and wide

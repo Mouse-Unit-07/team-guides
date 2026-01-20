@@ -54,15 +54,15 @@
   - "design rule checker" for JLC PCB: https://github.com/oxullo/jlcpcb-eagle/tree/master/design%20rules
 - **PCB Traces**
   - Use Saturn PCB Design tool to ensure that traces are wide enough to carry the desired current
-  - ![saturn-pcb](_images/electrical-design-guide/saturn-pcb.png)
+  - ![saturn-pcb](_images/electrical-design/saturn-pcb.png)
     - Even if your regulator circuit can provide 5A, 35 mil traces can only carry 3A
 - **Component Placement Planning**
   - There needs to be a plan before placing down components on a PCB
   - Provided we want the micromouse to be as small as possible, go down the line of space constraining parts (vacuum hole, IR sensor mounts, wheel motor mounts, etc) and design a processor pinout to optimally place components so there's minimal thinking needed when routing traces
-  - ![pcb-planning](_images/electrical-design-guide/pcb-planning.png)
+  - ![pcb-planning](_images/electrical-design/pcb-planning.png)
     - color coding MCU pinout based on component placement on the board
 - **Resistors**
-  - ![resistor-packages](_images/electrical-design-guide/resistor-packages.png)
+  - ![resistor-packages](_images/electrical-design/resistor-packages.png)
     - 0805 are very large and easy to solder- incorporate in design when necessary
     - 0603 are solderable- incorporate in design when necessary
     - 0402 is the smallest package that's comfortable to solder- use for all general use-cases
