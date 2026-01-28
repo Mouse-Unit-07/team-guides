@@ -1,5 +1,5 @@
 /*-------------------------------- FILE INFO ---------------------------------*/
-/* Filename           : CircularBuffer.cpp                                    */
+/* Filename           : circular_buffer.cpp                                   */
 /*                                                                            */
 /* File description here...                                                   */
 /*                                                                            */
@@ -8,11 +8,11 @@
 /*----------------------------------------------------------------------------*/
 /*                               Include Files                                */
 /*----------------------------------------------------------------------------*/
-#include "CircularBuffer.hpp"
+#include "circular_buffer.hpp"
 #include <cstdint>
 #include <string>
 #include <vector>
-#include "RuntimeError.hpp"
+#include "runtime_error.hpp"
 
 /*----------------------------------------------------------------------------*/
 /*                                 Debug Space                                */
@@ -36,12 +36,12 @@ namespace {
 /*----------------------------------------------------------------------------*/
 /*                            Private Declarations                            */
 /*----------------------------------------------------------------------------*/
-static uint32_t transformItem(uint32_t input);
+static uint32_t transform_item(uint32_t input);
 
 /*----------------------------------------------------------------------------*/
 /*                             Public Definitions                             */
 /*----------------------------------------------------------------------------*/
-CircularBuffer::CircularBuffer()
+circular_buffer::circular_buffer()
     : buffer_(CIRCULAR_BUFFER_CAPACITY, 0u),
       head_(0),
       tail_(0),
@@ -50,18 +50,18 @@ CircularBuffer::CircularBuffer()
     // No RUNTIME_ERROR here because constructor cannot fail in C++
 }
 
-void CircularBuffer::push(uint32_t item)
+void circular_buffer::push(uint32_t item)
 {
     if (count_ >= CIRCULAR_BUFFER_CAPACITY) {
         RUNTIME_ERROR("push: buffer full", static_cast<int>(count_));
     }
 
-    buffer_[tail_] = transformItem(item);
+    buffer_[tail_] = transform_item(item);
     tail_ = (tail_ + 1) % CIRCULAR_BUFFER_CAPACITY;
     ++count_;
 }
 
-uint32_t CircularBuffer::pop()
+uint32_t circular_buffer::pop()
 {
     if (count_ == 0u) {
         RUNTIME_ERROR("pop: buffer empty", static_cast<int>(count_));
@@ -76,7 +76,7 @@ uint32_t CircularBuffer::pop()
 /*----------------------------------------------------------------------------*/
 /*                             Private Definitions                            */
 /*----------------------------------------------------------------------------*/
-static uint32_t transformItem(uint32_t input)
+static uint32_t transform_item(uint32_t input)
 {
     // Stub for helper logic
     return input; // Identity transform by default

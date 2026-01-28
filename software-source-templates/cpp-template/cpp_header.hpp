@@ -1,5 +1,5 @@
 /*-------------------------------- FILE INFO ---------------------------------*/
-/* Filename           : CircularBuffer.hpp                                    */
+/* Filename           : cpp_header.hpp                                        */
 /*                                                                            */
 /* File description here...                                                   */
 /*                                                                            */
@@ -10,10 +10,10 @@
 /*----------------------------------------------------------------------------*/
 /*                             Public Declarations                            */
 /*----------------------------------------------------------------------------*/
-class CircularBuffer {
+class circular_buffer {
 public:
-    CircularBuffer();
-    ~CircularBuffer() = default;
+    circular_buffer();
+    ~circular_buffer() = default;
 
     void push(uint32_t item);
     uint32_t pop();

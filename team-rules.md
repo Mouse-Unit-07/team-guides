@@ -81,10 +81,33 @@
   - Makes GitHub side-by-side view easy to see
 - No tabs, 4 spaces per indentation
   - Arbitrary, but most IDE's/text editors default to 4 spaces
+- Pointer asterisk on variable name, not data type
+  - `uint32_t *myPointer = NULL;`
+  - `uint32_t *myPointer, *anotherPointer, *lastPointer;`
+  - Arbitrary, but useful if you were to declare multiple pointers in one line (which you shouldn't do either...)
+- No single line function definitions
+  - They're hard to catch and differentiate w/ other code
+- No single line enumerations
+  - A bit more arbitrary than function definitions
+  - Avoids need to go back and forth between single line and multiple line format if changes were to be made
+- Casing
+  - Variables, functions, typedefs, structs, + classes
+    - All snake case (all lowercase w/ underscores between: `just_like_this`)
+    - It's easier to read than camel case, and common for embedded code
+    - DON'T add `_t` suffix- that's reserved for code following POSIX like `size_t`
+  - Constants
+    - Screaming snake case (all caps w/ dashes between: `JUST_LIKE_THIS`)
+- C++ (and any other OO language)
+  - ...Original thought was to use camel/pascal case for OO languages, but it's a mess to look at CppUTests that mix C++ and C
+  - Let's just follow C casing
+- Java Docs
+  - No Java Doc comment headers
+  - We're not writing front facing API's, so we're not mandated to inject documentation in source code to generate nice Doxygen files
+  - Less comments the better
 - Curly Braces
   - Use curly braces even when there's only a single line to surround
     - There should always be less lines of code, but lack of braces causes hesitation to add / remove lines due to extra step of adding/removing braces
-  - Open curly brace `{` on the same line as conditional statement, unless it's a function definition
+  - Open curly brace `{` on the same line as conditional statement, unless it's a function definition (or anything else that can't be nested)
     - Lord Linus Torvald's Linux Kernel guide: https://docs.kernel.org/process/coding-style.html
     - You can't nest function definitions in C, so the highlight from `{` on its own line is nice
     - Otherwise, let's keep it compact
@@ -105,34 +128,6 @@ if (x == y) {
     /* ... */
 }
 ```
-
-- Pointer asterisk on variable name, not data type
-  - `uint32_t *myPointer = NULL;`
-  - `uint32_t *myPointer, *anotherPointer, *lastPointer;`
-  - Arbitrary, but useful if you were to declare multiple pointers in one line (which you shouldn't do either...)
-- No single line function definitions
-  - They're hard to catch and differentiate w/ other code
-- No single line enumerations
-  - A bit more arbitrary than function definitions
-  - Avoids need to go back and forth between single line and multiple line format if changes were to be made
-- C
-  - Variables, functions, typedefs, structs
-    - All snake case (all lowercase w/ underscores between: `just_like_this`)
-    - It's easier to read than camel case, and common for embedded code
-    - DON'T add `_t` suffix- that's reserved for code following POSIX like `size_t`
-  - Constants
-    - Screaming snake case (all caps w/ dashes between: `JUST_LIKE_THIS`)
-- C++ (and any other OO language)
-  - Variables, functions
-    - Camel case (first letter lowercase, and first letter of following words capitalized: `justLikeThis`)
-  - Classes, structs
-    - Pascal case (camel case, but first letter capitalized too: `JustLikeThis`)
-  - Constants
-    - Screaming snake case
-- Java Docs
-  - No Java Doc comment headers
-  - We're not writing front facing API's, so we're not mandated to inject documentation in source code to generate nice Doxygen files
-  - Less comments the better
 
 ## Can We Change Something?
 
