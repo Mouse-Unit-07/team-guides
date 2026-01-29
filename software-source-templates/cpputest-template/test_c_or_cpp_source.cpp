@@ -22,12 +22,7 @@ extern "C" {
 /*============================================================================*/
 /*                             Private Definitions                            */
 /*============================================================================*/
-static void failWithMessageIfNull(FILE *file, const char *fail_message)
-{
-    if (file == nullptr) {
-        FAIL(fail_message);
-    }
-}
+/* none */
 
 /*============================================================================*/
 /*                                 Test Group                                 */
@@ -40,15 +35,15 @@ TEST_GROUP(PrintHelloTest)
     {
         original_stdout = stdout;
         FILE *file = freopen("test_output.txt", "w+", stdout);
-        failWithMessageIfNull(file, "Failed to redirect stdout to test_output.txt");
+        CHECK(file != NULL);
     }
 
     void teardown()
     {
-        failWithMessageIfNull(stdout, "stdout is nullptr");
+        CHECK(stdout != NULL);
         fclose(stdout);
         FILE *file = freopen("CON", "w", original_stdout);
-        failWithMessageIfNull(file, "Failed to restore stdout to console");
+        CHECK(file != NULL);
     }
 };
 
@@ -57,15 +52,17 @@ TEST_GROUP(PrintHelloTest)
 /*============================================================================*/
 TEST(PrintHelloTest, PrintsHelloWorld)
 {
-    enum { MAX_BUFFER_SIZE = 128u };
-    char buffer[MAX_BUFFER_SIZE] = {0};
+    enum {
+        MAX_BUFFER_SIZE = 128u
+    };
+    char buffer[MAX_BUFFER_SIZE]{0};
 
-    printHelloWorld();
+    print_hello_world();
 
     fflush(stdout);
 
     FILE *file = fopen("test_output.txt", "r");
-    failWithMessageIfNull(file, "Failed to open test output file");
+    CHECK(file != NULL);
 
     fread(buffer, sizeof(char), sizeof(buffer), file);
     fclose(file);
