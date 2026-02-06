@@ -4,8 +4,8 @@
 /* File description here...                                                   */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
-#ifndef CIRCULAR_BUFFER_HPP
-#define CIRCULAR_BUFFER_HPP
+#ifndef CPP_HEADER_HPP
+#define CPP_HEADER_HPP
 
 /*----------------------------------------------------------------------------*/
 /*                             Public Declarations                            */
@@ -25,4 +25,4 @@ private:
     std::size_t count_;
 };
 
-#endif // CIRCULAR_BUFFER_HPP
+#endif // CPP_HEADER_HPP
