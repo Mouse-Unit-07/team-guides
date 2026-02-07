@@ -8,49 +8,54 @@
 /*----------------------------------------------------------------------------*/
 /*                               Include Files                                */
 /*----------------------------------------------------------------------------*/
-/* include things once, never look up here again */
-/* none */
+/* always needed */
+/* ...include things once, never look up here again */
+
+/*----------------------------------------------------------------------------*/
+/*                           Struct, Enum, Typedefs                           */
+/*----------------------------------------------------------------------------*/
+/* optional */
+/* ...needs to be separate from private globals for functions that take */
+/* private struct/enum/typedef as parameters */
 
 /*----------------------------------------------------------------------------*/
 /*                         Private Function Prototypes                        */
 /*----------------------------------------------------------------------------*/
-/* satisfy the compiler first, then you can read your code like a book */
-/* none */
+/* always needed */
+/* ...satisfy the compiler first, then you can read your code like a book */
 
 /*----------------------------------------------------------------------------*/
 /*                               Private Globals                              */
 /*----------------------------------------------------------------------------*/
-/* everything needs globals, definitions, constants */
-/* none */
+/* always needed */
+/* ...everything needs globals, definitions, constants */
 
 /*----------------------------------------------------------------------------*/
 /*                               Public Handles                               */
 /*----------------------------------------------------------------------------*/
-/* would like to put at the top, but handles can use constants */
-/* none */
+/* optional */
+/* ...would like to put at the top, but handles can use constants */
 
 /*----------------------------------------------------------------------------*/
 /*                         Interrupt Service Routines                         */
 /*----------------------------------------------------------------------------*/
-/* ISR's can use globals too */
-/* none */
+/* optional */
+/* ...ISR's can use globals too */
 
 /*----------------------------------------------------------------------------*/
 /*                         Public Function Definitions                        */
 /*----------------------------------------------------------------------------*/
-/* your book's index, or article headlines w/ short summaries */
-/* none */
+/* always needed */
+/* ...your book's index, or article headlines w/ short summaries */
 
 /*----------------------------------------------------------------------------*/
 /*                        Private Function Definitions                        */
 /*----------------------------------------------------------------------------*/
-/* book chapters or article details */
-/* none */
+/* always needed */
+/* ...book chapters or article details */
 
 /*----------------------------------------------------------------------------*/
 /*                                    Main                                    */
 /*----------------------------------------------------------------------------*/
-int main(void)
-{
-    /* your code here */
-}
+/* optional */
+/* ...your code here */
